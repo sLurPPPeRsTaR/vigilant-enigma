@@ -7,7 +7,7 @@ const updateUser = async (req, res) => {
 			{ $set: req.body },
 			{ new: true },
 		);
-		if (!updateUser) {
+		if (!updatedUser) {
 			return res.status(404).json({
 				message: 'User not found',
 			});
