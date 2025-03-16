@@ -1,3 +1,13 @@
+name: Node.js CI/CD
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
 jobs:
   build:
     runs-on: [self-hosted]
@@ -20,14 +30,14 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: server # 🔥 Tambahkan ini!
+        working-directory: server
 
       - name: Create .env file
         run: |
           touch .env
           echo "${{ secrets.PROD_ENV_FILE }}" > .env
-        working-directory: server # 🔥 Tambahkan ini!
+        working-directory: server
 
       - name: Restart PM2
         run: pm2 restart backendAPI
-        working-directory: server # 🔥 Tambahkan ini!
+        working-directory: server
